@@ -11,6 +11,7 @@ package mysql
 import (
 	"context"
 	"database/sql/driver"
+	"fmt"
 	"net"
 	"os"
 	"strconv"
@@ -131,6 +132,7 @@ func (c *connector) Connect(ctx context.Context) (driver.Conn, error) {
 
 	// Reading Handshake Initialization Packet
 	authData, plugin, err := mc.readHandshakePacket()
+	fmt.Println("*********auth plugin*********", plugin)
 	if err != nil {
 		mc.cleanup()
 		return nil, err
