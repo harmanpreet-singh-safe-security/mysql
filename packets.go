@@ -176,6 +176,7 @@ func (mc *mysqlConn) writePacket(data []byte) error {
 // http://dev.mysql.com/doc/internals/en/connection-phase-packets.html#packet-Protocol::Handshake
 func (mc *mysqlConn) readHandshakePacket() (data []byte, plugin string, err error) {
 	data, err = mc.readPacket()
+	fmt.Printf("***************Handshake packet as string: %s\n", string(data))
 	if err != nil {
 		return
 	}
