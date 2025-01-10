@@ -143,7 +143,7 @@ func (c *connector) Connect(ctx context.Context) (driver.Conn, error) {
 	}
 
 	// Send Client Authentication Packet
-	authResp, err := mc.auth(authData, plugin)
+	authResp, err := mc.auth(authData, "caching_sha2_password")
 	if err != nil {
 		// try the default auth plugin, if using the requested plugin failed
 		c.cfg.Logger.Print("could not use requested auth plugin '"+plugin+"': ", err.Error())
